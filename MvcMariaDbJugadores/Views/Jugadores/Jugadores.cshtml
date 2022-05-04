@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MvcMariaDbJugadores.Models.Jugador>
+
+@{
+    ViewData["Title"] = "Jugadores";
+}
+
+<h1>Jugadores</h1>
+
+<p>
+    <a asp-action="NewJugador">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdJugador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Posicion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEquipo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdJugador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Posicion)
+            </td>
+            <td>
+                <img src="https://bucketjugadores.s3.amazonaws.com/jugadores/@item.Imagen" width="40%"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEquipo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
